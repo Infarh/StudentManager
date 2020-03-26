@@ -16,5 +16,10 @@ namespace StudentManager
         {
             InitializeComponent();
         }
+
+        private void ExitMenuItem_OnClick(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
