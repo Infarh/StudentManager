@@ -54,6 +54,7 @@
             this.StudentRatingEdit = new System.Windows.Forms.NumericUpDown();
             this.StudentGroupEdit = new System.Windows.Forms.TextBox();
             this.SaveStudentChanges = new System.Windows.Forms.Button();
+            this.StudentsDBOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.MainMenu.SuspendLayout();
             this.StudentInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentRatingEdit)).BeginInit();
@@ -120,6 +121,7 @@
             this.OpenDataStudentsMenuItem.Name = "OpenDataStudentsMenuItem";
             this.OpenDataStudentsMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OpenDataStudentsMenuItem.Text = "Файл БД студентов";
+            this.OpenDataStudentsMenuItem.Click += new System.EventHandler(this.OpenStudentsDBMenuItem_OnClick);
             // 
             // OpenGrouDataMenuItem
             // 
@@ -298,6 +300,14 @@
             this.SaveStudentChanges.Text = "Сохранить изменения";
             this.SaveStudentChanges.UseVisualStyleBackColor = true;
             // 
+            // StudentsDBOpenFileDialog
+            // 
+            this.StudentsDBOpenFileDialog.DefaultExt = "csv";
+            this.StudentsDBOpenFileDialog.FileName = "Students.csv";
+            this.StudentsDBOpenFileDialog.Filter = "Файлы csv (*.csv)|*.csv|Все файлы (*.*)|*.*";
+            this.StudentsDBOpenFileDialog.RestoreDirectory = true;
+            this.StudentsDBOpenFileDialog.Title = "Выбор файла базы данных студентов";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +360,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox StudentLastNameEdit;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog StudentsDBOpenFileDialog;
     }
 }
 
