@@ -149,6 +149,7 @@
             this.AddNewStudentButton.TabIndex = 2;
             this.AddNewStudentButton.Text = "Добавить";
             this.AddNewStudentButton.UseVisualStyleBackColor = true;
+            this.AddNewStudentButton.Click += new System.EventHandler(this.AddNewStudentButton_Click);
             // 
             // RemoveStudentButton
             // 
@@ -159,6 +160,7 @@
             this.RemoveStudentButton.TabIndex = 3;
             this.RemoveStudentButton.Text = "Удалить";
             this.RemoveStudentButton.UseVisualStyleBackColor = true;
+            this.RemoveStudentButton.Click += new System.EventHandler(this.RemoveStudentButton_Click);
             // 
             // StudentInfoPanel
             // 
