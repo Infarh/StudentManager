@@ -138,6 +138,7 @@
             this.StudentsList.Name = "StudentsList";
             this.StudentsList.Size = new System.Drawing.Size(221, 186);
             this.StudentsList.TabIndex = 1;
+            this.StudentsList.SelectedIndexChanged += new System.EventHandler(this.StudentsList_OnSelectedIndexChanged);
             // 
             // AddNewStudentButton
             // 
@@ -299,6 +300,7 @@
             this.SaveStudentChanges.TabIndex = 12;
             this.SaveStudentChanges.Text = "Сохранить изменения";
             this.SaveStudentChanges.UseVisualStyleBackColor = true;
+            this.SaveStudentChanges.Click += new System.EventHandler(this.SaveStudentChanges_Click);
             // 
             // StudentsDBOpenFileDialog
             // 
