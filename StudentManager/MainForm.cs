@@ -28,7 +28,7 @@ namespace StudentManager
             StudentsDBOpenFileDialog.InitialDirectory = Environment.CurrentDirectory;
 
             var dialog_result = StudentsDBOpenFileDialog.ShowDialog();
-            if(dialog_result != DialogResult.OK) return;
+            if (dialog_result != DialogResult.OK) return;
 
             var data_file_name = StudentsDBOpenFileDialog.FileName;
 
@@ -54,10 +54,10 @@ namespace StudentManager
 
         private void StudentsList_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            var students_list_box = (ListBox) sender;
+            var students_list_box = (ListBox)sender;
 
             var selected_index = students_list_box.SelectedIndex;
-            if(selected_index < 0) return;
+            if (selected_index < 0) return;
 
             var student = _Students[selected_index];
 
@@ -113,7 +113,7 @@ namespace StudentManager
         {
             var selected_index = StudentsList.SelectedIndex;
 
-            if(selected_index < 0 || selected_index >= _Students.Count) return;
+            if (selected_index < 0 || selected_index >= _Students.Count) return;
             _Students.RemoveAt(selected_index);
             StudentsList.Items.RemoveAt(selected_index);
 
@@ -125,7 +125,7 @@ namespace StudentManager
             StudentsDBSaveFileDialog.InitialDirectory = Environment.CurrentDirectory;
 
             var dialog_result = StudentsDBSaveFileDialog.ShowDialog();
-            if(dialog_result != DialogResult.OK) return;
+            if (dialog_result != DialogResult.OK) return;
 
             var file_name = StudentsDBSaveFileDialog.FileName;
 
@@ -193,7 +193,43 @@ namespace StudentManager
 
         private void SaveGroupDBMenuItem_OnClick(object sender, EventArgs e)
         {
-            
+            var save_file_dialog = new SaveFileDialog
+            {
+                Title = "Выбор файла БД групп для сохранения информации",
+                Filter = "Файлы csv (*.csv)|*.csv|Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*",
+                RestoreDirectory = true,
+                InitialDirectory = Environment.CurrentDirectory,
+                FileName = "Groups.csv"
+            };
+
+            var dialog_result = save_file_dialog.ShowDialog();
+            if (dialog_result != DialogResult.OK) return;
+
+            var file_name = save_file_dialog.FileName;
+
+            if (File.Exists(file_name))
+            {
+                var chioce = MessageBox.Show(
+                    "Файл " + file_name + " существует. Хотите его перезаписать?",
+                    "Предупреджение!",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+                if (chioce != DialogResult.Yes) return;
+            }
+
+            using (var writer = File.CreateText(file_name))
+            {
+                writer.WriteLine("Id;Name;Course;Description");
+                foreach (var group in _Groups)
+                    writer.WriteLine(
+                        string.Join(
+                            ";",
+                            group.Id,
+                            group.Name,
+                            group.Course,
+                            group.Description));
+            }
         }
     }
 }
