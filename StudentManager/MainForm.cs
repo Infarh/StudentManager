@@ -123,5 +123,45 @@ namespace StudentManager
 
             StudentsList.SelectedIndex = selected_index - 1;
         }
+
+        private void SaveStudentsDBMenuItem_OnClickOpenStudentsDBMenuItem_OnClick(object sender, EventArgs e)
+        {
+            StudentsDBSaveFileDialog.InitialDirectory = Environment.CurrentDirectory;
+
+            var dialog_result = StudentsDBSaveFileDialog.ShowDialog();
+            if(dialog_result != DialogResult.OK) return;
+
+            var file_name = StudentsDBSaveFileDialog.FileName;
+
+            if (File.Exists(file_name))
+            {
+                var chioce = MessageBox.Show(
+                    "Файл " + file_name + " существует. Хотите его перезаписать?",
+                    "Предупреджение!",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+                if (chioce != DialogResult.Yes) return;
+            }
+
+            using (var writer = File.CreateText(file_name))
+            {
+                writer.WriteLine("Id;SurName;Name;Patronymic;Birthday;Rating;GroupId");
+
+                foreach (var student in _Students)
+                {
+                    var line = string.Join(";",
+                        student.Id,
+                        student.LastName,
+                        student.Name,
+                        student.Patronymic,
+                        student.Birthday.ToString("yyyy-MM-dd"),
+                        student.Rating,
+                        student.GroupId);
+
+                    writer.WriteLine(line);
+                }
+            }
+        }
     }
 }
