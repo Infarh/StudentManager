@@ -187,13 +187,13 @@ namespace StudentManager
             using (var reader = File.OpenText(data_file_name))
             {
                 _Groups.Clear();
-            
+                _Groups.AddRange(Extensions.ReadGroups(reader));
             }
         }
 
         private void SaveGroupDBMenuItem_OnClick(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
