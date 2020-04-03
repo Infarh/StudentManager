@@ -65,7 +65,11 @@ namespace StudentManager
             StudentNameEdit.Text = student.Name;
             StudentPatronymicEdit.Text = student.Patronymic;
 
+            StudentRatingEdit.Value = (decimal)student.Rating;
 
+            var group = _Groups.FirstOrDefault(g => g.Id == student.GroupId);
+            if(group != null) 
+                StudentGroupEdit.Text = group.Name;
         }
 
         private void SaveStudentChanges_Click(object sender, EventArgs e)
@@ -77,6 +81,7 @@ namespace StudentManager
             student.LastName = StudentLastNameEdit.Text;
             student.Name = StudentNameEdit.Text;
             student.Patronymic = StudentPatronymicEdit.Text;
+            student.Rating = (double)StudentRatingEdit.Value;
 
             StudentsList.Items[selected_index] = student.LastName + " " + student.Name;
         }

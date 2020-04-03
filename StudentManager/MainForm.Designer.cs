@@ -210,11 +210,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentGroupEdit.Location = new System.Drawing.Point(71, 153);
             this.StudentGroupEdit.Name = "StudentGroupEdit";
+            this.StudentGroupEdit.ReadOnly = true;
             this.StudentGroupEdit.Size = new System.Drawing.Size(176, 20);
             this.StudentGroupEdit.TabIndex = 11;
             // 
             // StudentRatingEdit
             // 
+            this.StudentRatingEdit.DecimalPlaces = 2;
             this.StudentRatingEdit.Location = new System.Drawing.Point(71, 127);
             this.StudentRatingEdit.Name = "StudentRatingEdit";
             this.StudentRatingEdit.Size = new System.Drawing.Size(97, 20);
