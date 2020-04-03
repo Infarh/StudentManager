@@ -107,6 +107,7 @@
             this.OpenGrouDataMenuItem.Name = "OpenGrouDataMenuItem";
             this.OpenGrouDataMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OpenGrouDataMenuItem.Text = "Файл БД групп";
+            this.OpenGrouDataMenuItem.Click += new System.EventHandler(this.OpenGroupDBMenuItem_OnClick);
             // 
             // toolStripMenuItem1
             // 
@@ -338,6 +339,7 @@
             this.SaveGroupsMenuItem.Name = "SaveGroupsMenuItem";
             this.SaveGroupsMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveGroupsMenuItem.Text = "Группы";
+            this.SaveGroupsMenuItem.Click += new System.EventHandler(this.SaveGroupDBMenuItem_OnClick);
             // 
             // StudentsDBSaveFileDialog
             // 

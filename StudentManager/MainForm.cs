@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using StudentManager.Models;
@@ -16,6 +11,7 @@ namespace StudentManager
     public partial class MainForm : Form
     {
         private readonly List<Student> _Students = new List<Student>();
+        private readonly List<Group> _Groups = new List<Group>();
 
         public MainForm()
         {
@@ -162,6 +158,42 @@ namespace StudentManager
                     writer.WriteLine(line);
                 }
             }
+        }
+
+        private void OpenGroupDBMenuItem_OnClick(object sender, EventArgs e)
+        {
+            var open_file_dialog = new OpenFileDialog
+            {
+                Title = "Выбор файла БД групп",
+                Filter = "Файлы csv (*.csv)|*.csv|Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*",
+                RestoreDirectory = true,
+                InitialDirectory = Environment.CurrentDirectory,
+                CheckFileExists = true,
+                FileName = "Groups.csv"
+            };
+
+            var dialog_result = open_file_dialog.ShowDialog();
+            if (dialog_result != DialogResult.OK) return;
+
+            var data_file_name = open_file_dialog.FileName;
+
+            if (!File.Exists(data_file_name))
+            {
+                MessageBox.Show("Выбранный файл не существует", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (var reader = File.OpenText(data_file_name))
+            {
+                _Groups.Clear();
+            
+            }
+        }
+
+        private void SaveGroupDBMenuItem_OnClick(object sender, EventArgs e)
+        {
+
         }
     }
 }
