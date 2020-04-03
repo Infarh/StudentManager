@@ -59,6 +59,7 @@
             this.SaveStudentsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveGroupsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StudentsDBSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.GroupsEditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.StudentInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentRatingEdit)).BeginInit();
@@ -68,6 +69,7 @@
             // 
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenuItem,
+            this.GroupsEditMenuItem,
             this.HelpMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
@@ -351,6 +353,13 @@
             this.StudentsDBSaveFileDialog.RestoreDirectory = true;
             this.StudentsDBSaveFileDialog.Title = "Выбор файла для сохранения БД студентов";
             // 
+            // GroupsEditMenuItem
+            // 
+            this.GroupsEditMenuItem.Name = "GroupsEditMenuItem";
+            this.GroupsEditMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.GroupsEditMenuItem.Text = "Группы";
+            this.GroupsEditMenuItem.Click += new System.EventHandler(this.GroupsEditMenuItem_OnClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,6 +417,7 @@
         private System.Windows.Forms.ToolStripMenuItem SaveStudentsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveGroupsMenuItem;
         private System.Windows.Forms.SaveFileDialog StudentsDBSaveFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem GroupsEditMenuItem;
     }
 }
 
